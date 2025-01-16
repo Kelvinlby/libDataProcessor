@@ -1,0 +1,3 @@
+setuptools~=75.8.0
+cython~=3.0.11
+polars~=1.17.1

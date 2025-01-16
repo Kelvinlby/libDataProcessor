@@ -1,9 +1,20 @@
-import numpy as np
+from setuptools import setup, find_packages, Extension
+from Cython.Build import cythonize
 
+sourceFiles = ["libDataProcessor/lib.py"]
 
-def main():
-    print('Hello World!')
+extensions = cythonize(
+    Extension(
+        name="libDataProcessor.so",
+        sources = sourceFiles,
+    ),
+    compiler_directives={"language_level": "3"},
+)
 
+kwargs = {
+    "name": "libDataProcessor",
+    "packages": find_packages(),
+    "ext_modules": extensions,
+}
 
-if __name__ == '__main__':
-    main()
+setup(**kwargs)
